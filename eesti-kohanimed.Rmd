@@ -1,0 +1,63 @@
+---
+title: "Eesti kohanimede ruumiline esinemissagedus"
+author: "Toomas Eilat"
+date: "8 märts 2016"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, message = FALSE)
+```
+
+```{r andmete laadimine}
+library(extrafont)
+library(dplyr)
+library(stringr)
+library(ggplot2)
+library(readr)
+library(scales)
+library(ggthemes)
+library(ggalt)
+library(sp)
+library(viridis)
+library(gridExtra)
+
+load("output/algandmed.RData")
+source("R/eesti_hexabin.R")
+
+```
+
+## Mis?
+Inspireerituna Moritz Stefaner'i [blogipostitusest](http://truth-and-beauty.net/experiments/ach-ingen-zell/) tegin Eesti [kohanimeregistri](http://xgis.maaamet.ee/knravalik/) baasil väikese analüüsi kohanimedes sisalduvate sõnade ruumilisest esinemissagedusest. Kohanimeregisteris on üle 155 000 kande: linnad, tänavad, järved, mäed, poolsaared, bussipeatused, talud jne. Sellest andmebaasist otsisin kohanimesid, mis sisaldavad mingit sõna, näiteks "mets" ja kuvasin kõik vastavad asukohad kaardile. Tumesinine toon näitab suurt esinemissagedust, heleroheline väikest ning kollane seda, et piirkonnas vastavat sõna sisaldavaid kohanimesid pole.
+
+```{r näide mets, fig.height = 3, fig.align = "center"}
+eesti_hexabin("mets")
+```
+
+See analüüs ei ole teaduslik ja ülimalt täpne lähenemine kohanimedele vaid pigem on eesmärk leida lihtsalt huvitavaid mustreid ja avastada Eestit uue nurga alt.
+
+## Suur ja väike
+Kus nimetakse...
+```{r väike-suur, fig.height = 3, fig.align = "center"}
+vaike <- eesti_hexabin("väike")
+suur <- eesti_hexabin("suur")
+
+grid.arrange(vaike, suur, ncol=2)
+```
+
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r cars}
+summary(cars)
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
