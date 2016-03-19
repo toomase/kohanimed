@@ -42,10 +42,10 @@ eesti_hexabin <- function(sona){
                  color="#ffffff", size=0.6) +
         scale_fill_identity(na.value=no_fill) +
         theme_map(base_family = "Lucida Sans") +
-        theme(plot.title = element_text(size = 16, colour = "#614949")) +
+        theme(plot.title = element_text(size = 20, colour = "#614949")) +
         ggtitle(str_c("-", sona, "-")) +
         annotate("text", x = 25.2, y = 57.5, label = str_c(nrow(sonaga_kohanimed), 
                                                            " kohta"), 
-                 colour = "#c5b1b1") +
+                 colour = "#c5b1b1", size = 5) +
         coord_proj("+init=epsg:3301")  # sobiv projektsioon
 }
